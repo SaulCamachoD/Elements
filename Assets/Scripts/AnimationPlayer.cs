@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class AnimationPlayer : MonoBehaviour
 {
-     public Animator animator;
-    // Update is called once per frame
+    public Animator animator;
+    public ActionPlayer ActionPlayer;
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     void Update()
     {
+        bool Grounded = ActionPlayer.Grounded;
         if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
         {
             animator.SetBool("Run", true);
