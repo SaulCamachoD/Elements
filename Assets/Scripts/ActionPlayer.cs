@@ -6,7 +6,7 @@ using UnityEngine;
 public class ActionPlayer : MonoBehaviour
 {
     public float speed = 4f;
-    public float jumpForce = 20f;
+    public float jumpForce = 16f;
     private float Movx;
     public bool Grounded;
     private Rigidbody2D rb;
