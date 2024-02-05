@@ -373,6 +373,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &640277132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 640277133}
+  m_Layer: 0
+  m_Name: ControlAttackBoss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &640277133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640277132}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.94, y: -0.97, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1074741419}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1033870584
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,10 +531,11 @@ Transform:
   m_GameObject: {fileID: 1074741417}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.89, y: 0.47, z: 0}
+  m_LocalPosition: {x: 1.12, y: 0.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 640277133}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1074741420
@@ -602,6 +634,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  ControAttack: {fileID: 640277133}
+  RadiusHit: 1.5
+  DamageHit: 15
+  TimeBettwenHit: 1
+  TimeToNextHit: 0
   animator: {fileID: 1074741420}
 --- !u!1 &1144852545
 GameObject:
@@ -724,6 +761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1144852548}
   ActionPlayer: {fileID: 1405737287}
+  HealthDeath: {fileID: 1405737289}
 --- !u!1 &1405737282
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,10 +774,11 @@ GameObject:
   - component: {fileID: 1405737286}
   - component: {fileID: 1405737285}
   - component: {fileID: 1405737287}
+  - component: {fileID: 1405737289}
   - component: {fileID: 1405737288}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -855,6 +894,22 @@ MonoBehaviour:
   DamageHit: 20
   TimeBettwenHit: 1
   TimeToNextHit: 0
+  compareTag: 
+  compareScript: 
+--- !u!114 &1405737289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405737282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcffcf41c4d4a19439fa6aaf15092784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+  isDeath: 0
 --- !u!1 &1990066611
 GameObject:
   m_ObjectHideFlags: 0

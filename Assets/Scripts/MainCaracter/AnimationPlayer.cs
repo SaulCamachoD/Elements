@@ -6,6 +6,7 @@ public class AnimationPlayer : MonoBehaviour
 {
     public Animator animator;
     public ActionPlayer ActionPlayer;
+    public HealthDeath HealthDeath;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -13,6 +14,7 @@ public class AnimationPlayer : MonoBehaviour
     void Update()
     {
         bool Grounded = ActionPlayer.Grounded;
+        bool isDeath = HealthDeath.isDeath;
         if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) && Grounded)
         {
             animator.SetBool("Run", true);
@@ -41,7 +43,10 @@ public class AnimationPlayer : MonoBehaviour
         {
             animator.SetTrigger("SuperAttack");
         }
-
+        if (isDeath)
+        {
+            animator.SetTrigger("Death");
+        }
         
     }
 }
