@@ -9,8 +9,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float DamageHit;
     [SerializeField] private float TimeBettwenHit;
     [SerializeField] private float TimeToNextHit;
-    public string compareTag;
-    public string compareScript;
+    
 
     private void Update()
     {
