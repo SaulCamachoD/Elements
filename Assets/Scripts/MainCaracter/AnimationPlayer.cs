@@ -15,7 +15,6 @@ public class AnimationPlayer : MonoBehaviour
     {
         bool Grounded = ActionPlayer.Grounded;
         bool isDeath = HealthDeath.isDeath;
-        bool reciveHit = HealthDeath.reciveHit;
         if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) && Grounded)
         {
             animator.SetBool("Run", true);
@@ -48,10 +47,7 @@ public class AnimationPlayer : MonoBehaviour
         {
             animator.SetTrigger("Death");
         }
-        if (reciveHit)
-        {
-            animator.SetTrigger("Hit");
-        }
+        
 
     }
 }
