@@ -7,14 +7,18 @@ public class AnimationPlayer : MonoBehaviour
     public Animator animator;
     public ActionPlayer ActionPlayer;
     public HealthDeath HealthDeath;
+    public bool Hitf;
     private void Start()
     {
         animator = GetComponent<Animator>();
     }
     void Update()
-    {
+    {   //Obtener variables de otros scripts
         bool Grounded = ActionPlayer.Grounded;
         bool isDeath = HealthDeath.isDeath;
+        bool Hit = HealthDeath.Hit;
+
+        //Control de todas las animaciones
         if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) && Grounded)
         {
             animator.SetBool("Run", true);
@@ -43,11 +47,17 @@ public class AnimationPlayer : MonoBehaviour
         {
             animator.SetTrigger("SuperAttack");
         }
-        if (isDeath)
+        if (isDeath )
         {
             animator.SetTrigger("Death");
+        }
+        else if(Hit)
+        {
+            animator.SetTrigger("Hit");
+            HealthDeath.Hit = false;
         }
         
 
     }
+    
 }

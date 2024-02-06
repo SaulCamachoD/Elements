@@ -11,9 +11,11 @@ public class FinalBoss : MonoBehaviour
     [SerializeField] private float TimeBettwenHit;
     [SerializeField] private float TimeToNextHit;
     public Animator animator;
+    
     void Start()
     {
         animator = GetComponent<Animator>();
+       
     }
 
     public void TakeDamage(float Damage)
@@ -52,6 +54,18 @@ public class FinalBoss : MonoBehaviour
             if (colicions.CompareTag("Player"))
             {
                 colicions.transform.GetComponent<HealthDeath>().TakeDamage(DamageHit);
+                colicions.GetComponent<ActionPlayer>().impulse = true;
+
+                if (transform.position.x > colicions.transform.position.x)
+                {
+                    colicions.GetComponent<ActionPlayer>().backForce = -3;
+                    colicions.transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+                else
+                {
+                    colicions.GetComponent<ActionPlayer>().backForce = 3;
+                    colicions.transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
             }
         }
 
@@ -62,4 +76,6 @@ public class FinalBoss : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(ControAttack.position, RadiusHit);
     }
+
+    
 }

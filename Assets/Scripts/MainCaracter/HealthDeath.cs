@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -7,9 +8,10 @@ public class HealthDeath : MonoBehaviour
 {
     [SerializeField] private float Health;
     public bool isDeath;
-    
-    
+    public bool Hit;
+ 
 
+    //Control de animacion de muerte que se envia al script de animacion
     public void TakeDamage(float Damage)
     {
         Health -= Damage;
@@ -21,7 +23,14 @@ public class HealthDeath : MonoBehaviour
         else
         {
             isDeath = false;
+            ReceiveHit();   
         } 
     }
-   
+
+    //Control de animacion de golpe recibido y se envia a script de animacion
+    public void ReceiveHit()
+    {
+        Hit = true;
+    }
+
 }
