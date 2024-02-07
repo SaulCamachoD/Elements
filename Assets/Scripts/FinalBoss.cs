@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class FinalBoss : MonoBehaviour
 {
@@ -10,12 +11,16 @@ public class FinalBoss : MonoBehaviour
     [SerializeField] private float DamageHit;
     [SerializeField] private float TimeBettwenHit;
     [SerializeField] private float TimeToNextHit;
+    private bool lookRight = false;
+    public Transform player;
+    public Rigidbody2D rb;
     public Animator animator;
     
     void Start()
     {
         animator = GetComponent<Animator>();
-       
+        rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     public void TakeDamage(float Damage)
@@ -34,16 +39,8 @@ public class FinalBoss : MonoBehaviour
 
     private void Update()
     {
-        if (TimeToNextHit > 0)
-        {
-            TimeToNextHit -= Time.deltaTime;
-        }
-        if (Input.GetButtonDown("Fire2") && TimeToNextHit <= 0)
-        {
-            Hit();
-            TimeToNextHit = TimeBettwenHit;
-            animator.SetTrigger("Cleave");
-        }
+        float DistancePlayer = Vector2.Distance(transform.position, player.position );
+        animator.SetFloat("DistancePlayer", DistancePlayer);
     }
     private void Hit()
     {
@@ -77,5 +74,12 @@ public class FinalBoss : MonoBehaviour
         Gizmos.DrawWireSphere(ControAttack.position, RadiusHit);
     }
 
-    
+    public void LookPlayer()
+    {
+        if((player.position.x > transform.position.x && !lookRight) || (player.position.x < transform.position.x && lookRight))
+        {
+            lookRight = !lookRight;
+            transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y + 180, 0f);
+        }
+    }
 }
