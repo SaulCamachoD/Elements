@@ -42,3 +42,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Sky
+    uniqueID: 3542462391
+    locked: 0
+  - name: vegetation
+    uniqueID: 557192419
+    locked: 0
+  - name: Spikes
+    uniqueID: 813674205
+    locked: 0
+  - name: Ground
+    uniqueID: 1713678929
+    locked: 0
