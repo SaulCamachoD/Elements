@@ -7,6 +7,7 @@ using UnityEngine;
 public class HealthDeath : MonoBehaviour
 {
     [SerializeField] private float Health;
+    public event EventHandler PlayerDeath;
     public bool isDeath;
     public bool Hit;
  
@@ -17,6 +18,7 @@ public class HealthDeath : MonoBehaviour
         Health -= Damage;
         if (Health <= 0)
         {
+            PlayerDeath?.Invoke(this, EventArgs.Empty);
             isDeath = true;
         }
 
