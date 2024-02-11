@@ -17,7 +17,7 @@ public class ControlCamera : MonoBehaviour
     private void Update()
     {
         // Seguir al personaje con suavidad
-        Vector3 desiredPosition = new Vector3(target.position.x + offset.x, transform.position.y, target.position.z + -3);
+        Vector3 desiredPosition = new Vector3(target.position.x + offset.x , transform.position.y, target.position.z + -3);
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
     }
