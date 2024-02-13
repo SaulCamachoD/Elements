@@ -8,13 +8,18 @@ public class GameOverMenu : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverMenu;
     private HealthDeath HealthDeath;
+    
+   
+
 
     private void Start()
     {
         HealthDeath = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthDeath>();
         HealthDeath.PlayerDeath += ActiveMenu;
+        
     }
 
+    
     private void ActiveMenu(object sender, EventArgs e)
     {
         gameOverMenu.SetActive(true);
