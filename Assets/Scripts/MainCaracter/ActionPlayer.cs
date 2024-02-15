@@ -16,11 +16,14 @@ public class ActionPlayer : MonoBehaviour
     private Rigidbody2D rb;
     public float impulseDuration = 0.5f;
     private float impulseTimer = 0f;
+    public float Xinicial;
+    private float Yinicial;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        Xinicial = transform.position.x;
+        Yinicial = transform.position.y;
     }
     void Update()
     {
@@ -88,8 +91,9 @@ public class ActionPlayer : MonoBehaviour
                 impulseTimer = 0f; 
             }
         }
-
-
-
+    }
+    public void putInInicialPosition()
+    {
+        transform.position = new Vector3(Xinicial, Yinicial, 0);
     }
 }
