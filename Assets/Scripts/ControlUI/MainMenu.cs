@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void play()
+    public void playOnePlayer()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("MainGame");
+    }
+
+    public void playTwoPlayers()
+    {
+        SceneManager.LoadScene("MainGame 1");
     }
 
     public void exit()

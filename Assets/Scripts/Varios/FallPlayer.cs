@@ -5,23 +5,35 @@ using UnityEngine;
 
 public class FallPlayer : MonoBehaviour
 {
- 
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        if (playerObject != null)
+        if (other.CompareTag("Player"))
         {
-            HealthDeath healthTakeDamage = playerObject.GetComponent<HealthDeath>();
+            HealthDeath healthTakeDamage = other.GetComponent<HealthDeath>();
 
             if (healthTakeDamage != null)
             {
-                
-                healthTakeDamage.TakeDamage(30f); 
+                healthTakeDamage.TakeDamage(30f);
             }
 
-            playerObject.SendMessage("putInInicialPosition");
-            print("Caiste");
+            other.SendMessage("putInInicialPosition");
+            print("Caiste jugador 1");
         }
+        else if (other.CompareTag("Player2"))
+        {
+            HeatlhDeath2 healthTakeDamage2 = other.GetComponent<HeatlhDeath2>();
+
+            if (healthTakeDamage2 != null)
+            {
+                healthTakeDamage2.TakeDamage(30f);
+            }
+
+            other.SendMessage("putInInicialPosition");
+            print("Caiste jugador 2");
+        }
+
     }
 }
+
